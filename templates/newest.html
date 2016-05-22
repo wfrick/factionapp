@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Faction</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min2.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbo.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Faction</a>
+    </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/newest">New</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/submitlink">Submit a Link</a></li>
+                <li><a href="/newsletter">Newsletter</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+      {% for link in links %}
+      <div class="jumbotron">
+        {% if link.source %}
+        <p>{{ link.source }}</p>
+        {% endif %}
+        <h2><a href={{ link.url }} target="_blank">{{ link.headline }}</a></h2>
+        <p>{{ link.summary }}</p>
+        {% set just_date = link.created|string() %}
+        {% set just_date = just_date[0:10] %}
+        <p><strong>Keywords: <a href={{ "/tag/" + link.keyword1|string() }}>{{ link.keyword1 }}</a> <a href={{ "/tag/" + link.keyword2|string() }}>{{link.keyword2 }}</a> <a href={{ "/tag/" + link.keyword3|string() }}>{{link.keyword3 }}</a></strong></p>
+        <p>Submitted: {{ just_date }} <a href={{ "/" + link.path }}><strong>More.</strong></a></p>
+        <form method="post">
+        <button name="Upvote" class="btn-large btn-success" type="submit" value={{ link.url }}>Upvote</button>
+        </form>
+        <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>-->
+      </div>
+      {% endfor %}
+  <div><h2 align="right"><a href="/{{pageroot}}/{{nextpage}}">Next Page >></a></h2></div>
+ <div class="footer">
+        <p>&copy; Faction 2015</p>
+      </div>
+
+  </div>
+
+       <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,51 @@
+application: factionapp-1227
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /css
+  static_dir: css
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /img
+  static_dir: img
+
+- url: /js
+  static_dir: js
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+
+- url: /sandbox
+  script: main.app
+  login: admin
+
+- url: /rss_cron
+  script: main.app
+  login: admin
+
+- url: /daily_cron
+  script: main.app
+  login: admin
+
+- url: /email_cron
+  script: main.app
+  login: admin
+  
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: latest
+
+builtins:
+- appstats: on

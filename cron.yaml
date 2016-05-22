@@ -1,0 +1,35 @@
+cron:
+- description: RSS feeds
+  url: /rss_cron
+  schedule: every 30 minutes
+  target: factionapp
+
+- description: Daily feeds
+  url: /daily_cron
+  schedule: every 3 hours from 11:59 to 23:59
+  target: factionapp
+
+- description: Monday email cron
+  url: /email_cron
+  schedule: every monday 12:40
+  target: factionapp
+
+- description: Tuesday email cron
+  url: /email_cron
+  schedule: every tuesday 12:40
+  target: factionapp
+
+- description: Wednesday email cron
+  url: /email_cron
+  schedule: every wednesday 12:40
+  target: factionapp
+
+- description: Thursday email cron
+  url: /email_cron
+  schedule: every thursday 12:40
+  target: factionapp
+
+- description: Friday email cron
+  url: /email_cron
+  schedule: every friday 12:40
+  target: factionapp

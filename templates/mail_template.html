@@ -1,0 +1,38 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Faction</title>
+  </head>
+
+  <body>
+    <h2>Top links</h2>
+
+      {% for link in links %}
+        {% if link.source %}
+        <p><strong>{{ link.source }}</strong></p>
+        {% endif %}
+        <h2><a href={{ link.url }} target="_blank">{{ link.headline }}</a></h2>
+        <p>{{ link.summary }}</p>
+        {% set just_date = link.created|string() %}
+        {% set just_date = just_date[0:10] %}
+        <p><strong>Keywords: <a href={{ "http://faction.pub/tag/" + link.keyword1|string() }}>{{ link.keyword1 }}</a> <a href={{ "http://faction.pub/tag/" + link.keyword2|string() }}>{{link.keyword2 }}</a> <a href={{ "http://faction.pub/tag/" + link.keyword3|string() }}>{{link.keyword3 }}</a></strong></p>
+        <p>Submitted: {{ just_date }} <a href={{ "http://faction.pub/" + link.path }}><strong>More.</strong></a></p>
+      </div>
+      {% endfor %}
+ 
+ <div class="footer">
+        <p>&copy; Faction 2015</p>
+      </div>
+
+
+
+
